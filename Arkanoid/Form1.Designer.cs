@@ -56,6 +56,7 @@
             Znajdzka2 = new Panel();
             znajdzkaTimer = new System.Windows.Forms.Timer(components);
             label1 = new Label();
+            user2Palette = new Panel();
             SuspendLayout();
             // 
             // panel1
@@ -221,7 +222,7 @@
             // userPalette
             // 
             userPalette.BackColor = SystemColors.HotTrack;
-            userPalette.Location = new Point(314, 422);
+            userPalette.Location = new Point(314, 483);
             userPalette.Name = "userPalette";
             userPalette.Size = new Size(145, 16);
             userPalette.TabIndex = 14;
@@ -259,11 +260,20 @@
             label1.TabIndex = 18;
             label1.Text = "3";
             // 
+            // user2Palette
+            // 
+            user2Palette.BackColor = Color.DarkOrange;
+            user2Palette.Location = new Point(314, 436);
+            user2Palette.Name = "user2Palette";
+            user2Palette.Size = new Size(145, 16);
+            user2Palette.TabIndex = 19;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(772, 450);
+            ClientSize = new Size(772, 511);
+            Controls.Add(user2Palette);
             Controls.Add(label1);
             Controls.Add(Znajdzka2);
             Controls.Add(Znajdzka1);
@@ -289,7 +299,6 @@
             Controls.Add(panel3);
             Controls.Add(panel2);
             Controls.Add(panel1);
-            MaximumSize = new Size(788, 489);
             MinimumSize = new Size(788, 489);
             Name = "Form1";
             Text = "Form1";
@@ -327,5 +336,6 @@
         private Panel Znajdzka2;
         private System.Windows.Forms.Timer znajdzkaTimer;
         private Label label1;
+        private Panel user2Palette;
     }
 }

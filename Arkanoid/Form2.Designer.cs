@@ -39,6 +39,8 @@
             label2 = new Label();
             label3 = new Label();
             label4 = new Label();
+            radioButton1 = new RadioButton();
+            radioButton2 = new RadioButton();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDown2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDown3).BeginInit();
@@ -85,39 +87,39 @@
             // 
             // numericUpDown1
             // 
-            numericUpDown1.Location = new Point(129, 99);
+            numericUpDown1.Location = new Point(155, 140);
             numericUpDown1.Maximum = new decimal(new int[] { 25, 0, 0, 0 });
             numericUpDown1.Minimum = new decimal(new int[] { 2, 0, 0, 0 });
             numericUpDown1.Name = "numericUpDown1";
-            numericUpDown1.Size = new Size(120, 23);
+            numericUpDown1.Size = new Size(121, 23);
             numericUpDown1.TabIndex = 4;
             numericUpDown1.Value = new decimal(new int[] { 2, 0, 0, 0 });
             numericUpDown1.ValueChanged += numericUpDown1_ValueChanged;
             // 
             // numericUpDown2
             // 
-            numericUpDown2.Location = new Point(129, 128);
+            numericUpDown2.Location = new Point(155, 169);
             numericUpDown2.Maximum = new decimal(new int[] { 800, 0, 0, 0 });
             numericUpDown2.Minimum = new decimal(new int[] { 5, 0, 0, 0 });
             numericUpDown2.Name = "numericUpDown2";
-            numericUpDown2.Size = new Size(120, 23);
+            numericUpDown2.Size = new Size(121, 23);
             numericUpDown2.TabIndex = 5;
             numericUpDown2.Value = new decimal(new int[] { 5, 0, 0, 0 });
             numericUpDown2.ValueChanged += numericUpDown2_ValueChanged;
             // 
             // numericUpDown3
             // 
-            numericUpDown3.Location = new Point(129, 157);
+            numericUpDown3.Location = new Point(155, 198);
             numericUpDown3.Name = "numericUpDown3";
-            numericUpDown3.Size = new Size(120, 23);
+            numericUpDown3.Size = new Size(121, 23);
             numericUpDown3.TabIndex = 6;
             numericUpDown3.ValueChanged += numericUpDown3_ValueChanged;
             // 
             // button4
             // 
-            button4.Location = new Point(129, 183);
+            button4.Location = new Point(155, 224);
             button4.Name = "button4";
-            button4.Size = new Size(120, 23);
+            button4.Size = new Size(121, 34);
             button4.TabIndex = 7;
             button4.Text = "dedykowany";
             button4.UseVisualStyleBackColor = true;
@@ -126,7 +128,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(40, 101);
+            label2.Location = new Point(67, 142);
             label2.Name = "label2";
             label2.Size = new Size(83, 15);
             label2.TabIndex = 8;
@@ -136,7 +138,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(21, 130);
+            label3.Location = new Point(48, 171);
             label3.Name = "label3";
             label3.Size = new Size(102, 15);
             label3.TabIndex = 9;
@@ -145,18 +147,44 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(18, 159);
+            label4.Location = new Point(45, 200);
             label4.Name = "label4";
             label4.Size = new Size(105, 15);
             label4.TabIndex = 10;
             label4.Text = "szansa na znajdzke";
             label4.Click += label4_Click;
             // 
+            // radioButton1
+            // 
+            radioButton1.AutoSize = true;
+            radioButton1.Location = new Point(67, 94);
+            radioButton1.Name = "radioButton1";
+            radioButton1.Size = new Size(106, 19);
+            radioButton1.TabIndex = 11;
+            radioButton1.TabStop = true;
+            radioButton1.Text = "chce grac coop";
+            radioButton1.UseVisualStyleBackColor = true;
+            radioButton1.CheckedChanged += radioButton1_CheckedChanged;
+            // 
+            // radioButton2
+            // 
+            radioButton2.AutoSize = true;
+            radioButton2.Location = new Point(182, 94);
+            radioButton2.Name = "radioButton2";
+            radioButton2.Size = new Size(128, 19);
+            radioButton2.TabIndex = 12;
+            radioButton2.TabStop = true;
+            radioButton2.Text = "nie chce grac  coop";
+            radioButton2.UseVisualStyleBackColor = true;
+            radioButton2.CheckedChanged += radioButton2_CheckedChanged;
+            // 
             // Form2
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(369, 217);
+            ClientSize = new Size(369, 294);
+            Controls.Add(radioButton2);
+            Controls.Add(radioButton1);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
@@ -170,6 +198,7 @@
             Controls.Add(label1);
             Name = "Form2";
             Text = "Form2";
+            Load += Form2_Load;
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDown2).EndInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDown3).EndInit();
@@ -190,5 +219,7 @@
         private Label label2;
         private Label label3;
         private Label label4;
+        private RadioButton radioButton1;
+        private RadioButton radioButton2;
     }
 }

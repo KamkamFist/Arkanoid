@@ -1,6 +1,7 @@
-using System;
+﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace Arkanoid
 {
@@ -20,6 +21,8 @@ namespace Arkanoid
         private DateTime[] effectStartTime = new DateTime[2];
         private bool[] effectExpired = new bool[2];
         int licznik = 3;
+        public bool coop = false;
+
 
         public Form1()
         {
@@ -34,6 +37,27 @@ namespace Arkanoid
             znajdzkaTimer.Interval = 100;
             znajdzkaTimer.Tick += znajdzkaTimer_Tick;
             znajdzkaTimer.Start();
+            playMusic();
+        }
+
+        private void playMusic()
+        {
+            string[] tytuly = {
+                "4o.wav",
+                "pp.wav",
+                "r.wav",
+                "s.wav"
+            };
+
+            Random rand = new Random();
+            int losowa = rand.Next(0, 4);
+            string music = tytuly[losowa];
+
+            System.Media.SoundPlayer player = new System.Media.SoundPlayer();
+
+            player.SoundLocation = $"C:\\Users\\4313657\\source\\repos\\KamkamFist\\Arkanoid\\{music}";
+            player.Load();
+            player.Play();
         }
 
         private void LevelSelection()
@@ -44,9 +68,22 @@ namespace Arkanoid
                 ballSpeed = levelForm.bspeed;
                 playerWidth = levelForm.pwidth;
                 znajdzkaszansa = levelForm.z;
+                coop = levelForm.coop;  // Assuming coop is passed from Form2
                 userPalette.Width = playerWidth;
+                user2Palette.Width = playerWidth; // Update width of second paddle
+
+                // Hide or show user2Palette based on coop
+                if (!coop)
+                {
+                    user2Palette.Visible = false;
+                }
+                else
+                {
+                    user2Palette.Visible = true;
+                }
             }
         }
+
 
         private void InitializePanels()
         {
@@ -75,6 +112,7 @@ namespace Arkanoid
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
+            // Sterowanie pierwszą paletką
             if (e.KeyCode == Keys.A && userPalette.Left > 0)
             {
                 userPalette.Left -= playerSpeed;
@@ -82,6 +120,16 @@ namespace Arkanoid
             if (e.KeyCode == Keys.D && userPalette.Right < ClientSize.Width)
             {
                 userPalette.Left += playerSpeed;
+            }
+
+            // Sterowanie drugą paletką (za pomocą strzałek)
+            if (e.KeyCode == Keys.Left && user2Palette.Left > 0)
+            {
+                user2Palette.Left -= playerSpeed;
+            }
+            if (e.KeyCode == Keys.Right && user2Palette.Right < ClientSize.Width)
+            {
+                user2Palette.Left += playerSpeed;
             }
         }
 
@@ -99,11 +147,13 @@ namespace Arkanoid
                 ballX = -ballX;
             }
 
-            if (Ballz.Bounds.IntersectsWith(userPalette.Bounds))
+            // Kolizje z paletkami
+            if (Ballz.Bounds.IntersectsWith(userPalette.Bounds) || Ballz.Bounds.IntersectsWith(user2Palette.Bounds))
             {
                 ballY = -ballY;
             }
 
+            // Kolizje z blokami
             foreach (var panel in panels)
             {
                 if (panel.Visible && Ballz.Bounds.IntersectsWith(panel.Bounds))
@@ -118,7 +168,7 @@ namespace Arkanoid
                     label1.Text = licznik.ToString();
                     if (destroyedBlocks == panels.Length)
                     {
-                        MessageBox.Show("Wygra�e�! Zniszczy�e� wszystkie bloki!", "Gratulacje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Wygrałeś! Zniszczyłeś wszystkie bloki!", "Gratulacje", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         ResetGame();
                     }
 
@@ -142,7 +192,7 @@ namespace Arkanoid
             licznik -= 1;
             if (licznik <= 0)
             {
-                MessageBox.Show("przegra�e� misiak");
+                MessageBox.Show("przegrałeś misiak");
                 licznik = 3;
                 ResetGame();
                 label1.Text = licznik.ToString();
@@ -208,6 +258,24 @@ namespace Arkanoid
                     znajdzki[i].Visible = false;
                     effectExpired[i] = false;
                 }
+
+                // Kolizja z drugą paletką
+                if (znajdzki[i].Visible && znajdzki[i].Bounds.IntersectsWith(user2Palette.Bounds))
+                {
+                    switch (i)
+                    {
+                        case 0:
+                            ballX /= 2;
+                            ballY /= 2;
+                            break;
+                        case 1:
+                            user2Palette.Width += 20;
+                            break;
+                    }
+
+                    znajdzki[i].Visible = false;
+                    effectExpired[i] = false;
+                }
             }
         }
 
@@ -227,6 +295,8 @@ namespace Arkanoid
 
         private void DeactivateEffect(int znajdzkaIndex)
         {
+            effectExpired[znajdzkaIndex] = true;
+
             switch (znajdzkaIndex)
             {
                 case 0:
@@ -238,17 +308,16 @@ namespace Arkanoid
                     break;
             }
 
+            znajdzki[znajdzkaIndex].Visible = false;
             znajdzkiActive[znajdzkaIndex] = false;
-            effectExpired[znajdzkaIndex] = true;
         }
 
         private void ResetBall()
         {
             Ballz.Left = (ClientSize.Width / 2) - (Ballz.Width / 2);
             Ballz.Top = (ClientSize.Height / 2) - (Ballz.Height / 2);
-            Random rand = new Random();
-            ballX = rand.Next(2) == 0 ? -Math.Abs(ballX) : Math.Abs(ballX);
-            ballY = rand.Next(2) == 0 ? -Math.Abs(ballY) : Math.Abs(ballY);
+            ballX = 10;
+            ballY = 10;
         }
 
         private void ResetGame()
@@ -258,8 +327,8 @@ namespace Arkanoid
             {
                 panel.Visible = true;
             }
+
             ResetBall();
-            InitializeZnajdzki();
         }
     }
 }

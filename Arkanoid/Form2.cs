@@ -14,6 +14,7 @@ namespace Arkanoid
         public int bspeed = 0;
         public int pwidth = 0;
         public int z = 0;
+        public bool coop = false;
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -63,6 +64,7 @@ namespace Arkanoid
             pwidth = (int)numericUpDown2.Value;
             z = (int)numericUpDown3.Value;
 
+
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
@@ -75,6 +77,21 @@ namespace Arkanoid
         private void label4_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void Form2_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            coop = true;
+        }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            coop = false;
         }
     }
 }
