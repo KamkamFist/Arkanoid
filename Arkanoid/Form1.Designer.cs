@@ -52,12 +52,16 @@
             userPalette = new Panel();
             Ballz = new Panel();
             gameTimer = new System.Windows.Forms.Timer(components);
+            Znajdzka1 = new Panel();
+            Znajdzka2 = new Panel();
+            znajdzkaTimer = new System.Windows.Forms.Timer(components);
+            label1 = new Label();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.BackColor = SystemColors.ActiveCaptionText;
-            panel1.Location = new Point(12, 34);
+            panel1.Location = new Point(12, 23);
             panel1.Name = "panel1";
             panel1.Size = new Size(145, 16);
             panel1.TabIndex = 0;
@@ -65,7 +69,7 @@
             // panel2
             // 
             panel2.BackColor = SystemColors.ActiveCaptionText;
-            panel2.Location = new Point(12, 12);
+            panel2.Location = new Point(12, 1);
             panel2.Name = "panel2";
             panel2.Size = new Size(145, 16);
             panel2.TabIndex = 1;
@@ -73,7 +77,7 @@
             // panel3
             // 
             panel3.BackColor = SystemColors.ActiveCaptionText;
-            panel3.Location = new Point(163, 12);
+            panel3.Location = new Point(163, 1);
             panel3.Name = "panel3";
             panel3.Size = new Size(145, 16);
             panel3.TabIndex = 1;
@@ -81,7 +85,7 @@
             // panel4
             // 
             panel4.BackColor = SystemColors.ActiveCaptionText;
-            panel4.Location = new Point(163, 34);
+            panel4.Location = new Point(163, 23);
             panel4.Name = "panel4";
             panel4.Size = new Size(145, 16);
             panel4.TabIndex = 1;
@@ -89,7 +93,7 @@
             // panel5
             // 
             panel5.BackColor = SystemColors.ActiveCaptionText;
-            panel5.Location = new Point(314, 12);
+            panel5.Location = new Point(314, 1);
             panel5.Name = "panel5";
             panel5.Size = new Size(145, 16);
             panel5.TabIndex = 1;
@@ -97,7 +101,7 @@
             // panel6
             // 
             panel6.BackColor = SystemColors.ActiveCaptionText;
-            panel6.Location = new Point(314, 34);
+            panel6.Location = new Point(314, 23);
             panel6.Name = "panel6";
             panel6.Size = new Size(145, 16);
             panel6.TabIndex = 1;
@@ -105,7 +109,7 @@
             // panel7
             // 
             panel7.BackColor = SystemColors.ActiveCaptionText;
-            panel7.Location = new Point(465, 12);
+            panel7.Location = new Point(465, 1);
             panel7.Name = "panel7";
             panel7.Size = new Size(145, 16);
             panel7.TabIndex = 1;
@@ -113,7 +117,7 @@
             // panel8
             // 
             panel8.BackColor = SystemColors.ActiveCaptionText;
-            panel8.Location = new Point(465, 34);
+            panel8.Location = new Point(465, 23);
             panel8.Name = "panel8";
             panel8.Size = new Size(145, 16);
             panel8.TabIndex = 1;
@@ -121,7 +125,7 @@
             // panel9
             // 
             panel9.BackColor = SystemColors.ActiveCaptionText;
-            panel9.Location = new Point(616, 34);
+            panel9.Location = new Point(616, 23);
             panel9.Name = "panel9";
             panel9.Size = new Size(145, 16);
             panel9.TabIndex = 2;
@@ -129,7 +133,7 @@
             // panel10
             // 
             panel10.BackColor = SystemColors.ActiveCaptionText;
-            panel10.Location = new Point(616, 12);
+            panel10.Location = new Point(616, 1);
             panel10.Name = "panel10";
             panel10.Size = new Size(145, 16);
             panel10.TabIndex = 3;
@@ -137,7 +141,7 @@
             // panel11
             // 
             panel11.BackColor = SystemColors.ActiveCaptionText;
-            panel11.Location = new Point(616, 78);
+            panel11.Location = new Point(616, 67);
             panel11.Name = "panel11";
             panel11.Size = new Size(145, 16);
             panel11.TabIndex = 12;
@@ -145,7 +149,7 @@
             // panel12
             // 
             panel12.BackColor = SystemColors.ActiveCaptionText;
-            panel12.Location = new Point(616, 56);
+            panel12.Location = new Point(616, 45);
             panel12.Name = "panel12";
             panel12.Size = new Size(145, 16);
             panel12.TabIndex = 13;
@@ -153,7 +157,7 @@
             // panel13
             // 
             panel13.BackColor = SystemColors.ActiveCaptionText;
-            panel13.Location = new Point(465, 78);
+            panel13.Location = new Point(465, 67);
             panel13.Name = "panel13";
             panel13.Size = new Size(145, 16);
             panel13.TabIndex = 5;
@@ -161,7 +165,7 @@
             // panel14
             // 
             panel14.BackColor = SystemColors.ActiveCaptionText;
-            panel14.Location = new Point(465, 56);
+            panel14.Location = new Point(465, 45);
             panel14.Name = "panel14";
             panel14.Size = new Size(145, 16);
             panel14.TabIndex = 6;
@@ -169,7 +173,7 @@
             // panel15
             // 
             panel15.BackColor = SystemColors.ActiveCaptionText;
-            panel15.Location = new Point(314, 78);
+            panel15.Location = new Point(314, 67);
             panel15.Name = "panel15";
             panel15.Size = new Size(145, 16);
             panel15.TabIndex = 7;
@@ -177,7 +181,7 @@
             // panel16
             // 
             panel16.BackColor = SystemColors.ActiveCaptionText;
-            panel16.Location = new Point(314, 56);
+            panel16.Location = new Point(314, 45);
             panel16.Name = "panel16";
             panel16.Size = new Size(145, 16);
             panel16.TabIndex = 8;
@@ -185,7 +189,7 @@
             // panel17
             // 
             panel17.BackColor = SystemColors.ActiveCaptionText;
-            panel17.Location = new Point(163, 78);
+            panel17.Location = new Point(163, 67);
             panel17.Name = "panel17";
             panel17.Size = new Size(145, 16);
             panel17.TabIndex = 9;
@@ -193,7 +197,7 @@
             // panel18
             // 
             panel18.BackColor = SystemColors.ActiveCaptionText;
-            panel18.Location = new Point(163, 56);
+            panel18.Location = new Point(163, 45);
             panel18.Name = "panel18";
             panel18.Size = new Size(145, 16);
             panel18.TabIndex = 10;
@@ -201,7 +205,7 @@
             // panel19
             // 
             panel19.BackColor = SystemColors.ActiveCaptionText;
-            panel19.Location = new Point(12, 56);
+            panel19.Location = new Point(12, 45);
             panel19.Name = "panel19";
             panel19.Size = new Size(145, 16);
             panel19.TabIndex = 11;
@@ -209,7 +213,7 @@
             // panel20
             // 
             panel20.BackColor = SystemColors.ActiveCaptionText;
-            panel20.Location = new Point(12, 78);
+            panel20.Location = new Point(12, 67);
             panel20.Name = "panel20";
             panel20.Size = new Size(145, 16);
             panel20.TabIndex = 4;
@@ -230,11 +234,39 @@
             Ballz.Size = new Size(27, 25);
             Ballz.TabIndex = 15;
             // 
+            // Znajdzka1
+            // 
+            Znajdzka1.BackColor = Color.SkyBlue;
+            Znajdzka1.Location = new Point(536, 205);
+            Znajdzka1.Name = "Znajdzka1";
+            Znajdzka1.Size = new Size(17, 16);
+            Znajdzka1.TabIndex = 16;
+            // 
+            // Znajdzka2
+            // 
+            Znajdzka2.BackColor = Color.Red;
+            Znajdzka2.Location = new Point(224, 205);
+            Znajdzka2.Name = "Znajdzka2";
+            Znajdzka2.Size = new Size(17, 16);
+            Znajdzka2.TabIndex = 17;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(12, 382);
+            label1.Name = "label1";
+            label1.Size = new Size(13, 15);
+            label1.TabIndex = 18;
+            label1.Text = "3";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(772, 450);
+            Controls.Add(label1);
+            Controls.Add(Znajdzka2);
+            Controls.Add(Znajdzka1);
             Controls.Add(Ballz);
             Controls.Add(userPalette);
             Controls.Add(panel11);
@@ -263,6 +295,7 @@
             Text = "Form1";
             KeyDown += Form1_KeyDown;
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -290,5 +323,9 @@
         private Panel userPalette;
         private Panel Ballz;
         private System.Windows.Forms.Timer gameTimer;
+        private Panel Znajdzka1;
+        private Panel Znajdzka2;
+        private System.Windows.Forms.Timer znajdzkaTimer;
+        private Label label1;
     }
 }
